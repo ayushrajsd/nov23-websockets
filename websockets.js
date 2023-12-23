@@ -22,10 +22,11 @@ io.on('connection', (socket) => {
     })
 
     /** listen to create grp */
-    socket.on("create_grp",(roomId)=>{
+    socket.on("create_grp",(roomId, callback)=>{
         console.log("group created",roomId)
         room = roomId
         socket.join(roomId) // first member of the room
+        callback("group created")
     })
 
     socket.on("join_grp",()=>{
